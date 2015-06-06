@@ -17,7 +17,7 @@ var rl = require('readline');
     var inputReadLine = rl.createInterface({'input': inputStream, 'output': {}});
     // 一行づつ読み込むためのインターフェース
 
-    var recipies = []; // レシピを保存する
+    var recipies = []; // レシピの配列
 
     inputReadLine
         .on('line', function(line){ // 一行読み込む
