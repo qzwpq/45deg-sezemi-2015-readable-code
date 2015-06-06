@@ -7,5 +7,5 @@ Node.js v0.12.4
 ## 実行方法
 
 ```
-node app.js
+node app.js ./recipe-data.txt
 ```
