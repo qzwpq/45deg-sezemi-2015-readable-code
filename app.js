@@ -41,7 +41,7 @@ var getNameById = function(id, recipies) {
         'output': {}
     });
 
-    var inputLines = []; // the array of stdin
+    var inputLines = []; // the array of the data of recipe
 
     var recipies = []; // レシピの名前とIDを含めるオブジェクトの配列
 
