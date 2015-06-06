@@ -34,7 +34,7 @@ var getRecipeByid = function(id, recipes) {
 
 
 (function main() {
-    var filename = process.argv[2]; // argv = ["node", "app.js", filename, [id, id, ....]]
+    var filename = process.argv[2]; // argv = ["node", "app.js", filename(, id, id, ....)]
 
     var targetIds = process.argv.slice(3).map(function(i) {
         return i - 0; // convert string to number
