@@ -21,11 +21,11 @@ var printRecipe = function(formatStr, recipe){
 
 };
 
-var getRecipeByName = function(id, recipies) {
-    for (var i = recipies.length - 1; i >= 0; i--) {
-        var recipie = recipies[i];
-        if (recipie.id === id) {
-            return recipie;
+var getRecipeByid = function(id, recipes) {
+    for (var i = recipes.length - 1; i >= 0; i--) {
+        var recipe = recipes[i];
+        if (recipe.id === id) {
+            return recipe;
         }
     }
     new Error('the id is not in the recipes');
@@ -37,7 +37,7 @@ var getRecipeByName = function(id, recipies) {
     var filename = process.argv[2]; // argv = ["node", "app.js", filename, [id, id, ....]]
 
     var targetIds = process.argv.slice(3).map(function(i) {
-        return i - 0; // typeof i === 'string'
+        return i - 0; // convert string to number
     });
 
     if (typeof filename !== "string") { // ファイル名が与えられていない
@@ -56,7 +56,7 @@ var getRecipeByName = function(id, recipies) {
 
     var inputLines = []; // the array of the data of recipe
 
-    var recipies = []; // レシピの名前とIDを含めるオブジェクトの配列
+    var recipes = []; // レシピの名前とIDを含めるオブジェクトの配列
 
     inputReadLine
         .on('line', function(line) { // 一行読み込む
@@ -76,18 +76,18 @@ var getRecipeByName = function(id, recipies) {
                     url:url
                 };
 
-                recipies.push(recipieObj);
+                recipes.push(recipieObj);
             });
             // 引数(ID)の処理
             if (targetIds.length === 0) {
-                // print all the recipies
-                recipies.forEach(function(recipe){
-                    printRecipe('<id>: <name> <url>', recipies);
+                // print all the recipes 
+                recipes.forEach(function(recipe){
+                    printRecipe('<id>: <name> <url>', recipe);
                 });
             } else {
-                //print the specified recipie(s)
+                // print the specified recipe(s)
                 targetIds.forEach(function(id) {
-                    var recipe = getRecipeByName(id, recipies);
+                    var recipe = getRecipeByid(id, recipes);
                     printRecipe('<id>: <name> <url>', recipe);
                 });
             }
