@@ -24,7 +24,7 @@ var getRecipeByName = function(id, recipies) {
     for (var i = recipies.length - 1; i >= 0; i--) {
         var recipie = recipies[i];
         if (recipie.id === id) {
-            return recipe;
+            return recipie;
         }
     }
     new Error('the id in not in the object');
@@ -81,7 +81,8 @@ var getRecipeByName = function(id, recipies) {
             if (targetIds.length === 0) {
                 // print all the recipies
                 recipies.forEach(function(recipe){
-                    printRecipe('<id>: <name> <url>', recipe);
+                    printRecipe('<id>: <name> <url>', recipies);
+                });
             } else {
                 //print the specified recipie(s)
                 targetIds.forEach(function(id) {
