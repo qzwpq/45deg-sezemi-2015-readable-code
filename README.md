@@ -27,5 +27,5 @@ IDは記載されている順に`1,2,3,...`と付与されます
 
 以下のコマンドで実行することができます
 ```
-node app.js ./recipe-data.txt [id1 [id2 [[...]]]]
+node app.js ./recipe-data.txt [id1 [id2 [...]]]
 ```

@@ -5,7 +5,7 @@ var fs = require('fs');
 var rl = require('readline');
 
 // print the recipe by given format
-// <name>, <url>, <id> is replaced by the value of the recipe object
+// <name>, <url>, <id> are replaced by the value of the recipe object
 var printRecipe = function(formatStr, recipe){
     var recipeName  = recipe.name;
     var recipeUrl   = recipe.url;
