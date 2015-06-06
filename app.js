@@ -4,7 +4,8 @@
 var fs = require('fs');
 var rl = require('readline');
 
-
+// print the recipe by given format
+// <name>, <url>, <id> is replaced by the value of the recipe object
 var printRecipe = function(formatStr, recipe){
     var recipeName  = recipe.name;
     var recipeUrl   = recipe.url;
@@ -65,7 +66,7 @@ var getRecipeByName = function(id, recipies) {
             inputLines.forEach(function(line, index) {
 
                 // split at the space(s)
-                line = line.split(/\s+/);
+                line = line.split(/\s+/); // 'name url' -> ['name', 'url']
 
                 var name = line[0];
                 var url  = line[1];
