@@ -27,7 +27,7 @@ var getRecipeByName = function(id, recipies) {
             return recipie;
         }
     }
-    new Error('the id in not in the object');
+    new Error('the id is not in the recipes');
 };
 
 
