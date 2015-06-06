@@ -41,20 +41,26 @@ var getNameById = function(id, recipies) {
         'output': {}
     });
 
-    var recipieNameArray = []; // レシピの名前の配列
+    var inputLines = []; // the array of stdin
 
     var recipies = []; // レシピの名前とIDを含めるオブジェクトの配列
 
     inputReadLine
         .on('line', function(line) { // 一行読み込む
-            recipieNameArray.push(line); // レシピに追加
+            inputLines.push(line);
         })
         .on('close', function() { // ファイル読み込み完了
-            recipieNameArray.forEach(function(recipie, index) {
+            inputLines.forEach(function(line, index) {
 
+                // split at the space(s)
+                line = line.split(/\s+/);
+
+                var name = line[0];
+                var url  = line[1];
                 var recipieObj = {
                     id: index + 1, // 1-indexed
-                    name: recipie
+                    name: name,
+                    url:url
                 };
 
                 recipies.push(recipieObj);
