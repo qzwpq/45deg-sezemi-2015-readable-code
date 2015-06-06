@@ -4,6 +4,7 @@
 var fs = require('fs');
 var rl = require('readline');
 
+
 var printRecipe = function(formatStr, recipe){
     var recipeName  = recipe.name;
     var recipeUrl   = recipe.url;
@@ -79,16 +80,13 @@ var getRecipeByName = function(id, recipies) {
             // 引数(ID)の処理
             if (targetIds.length === 0) {
                 // print all the recipies
-                recipies.forEach(printRecipie);
+                recipies.forEach(function(recipe){
+                    printRecipe('<id>: <name> <url>', recipe);
             } else {
                 //print the specified recipie(s)
                 targetIds.forEach(function(id) {
-                    var name = getRecipeByName(id, recipies);
-                    var recipie = {
-                        name: name,
-                        id: id
-                    };
-                    printRecipie(recipie);
+                    var recipe = getRecipeByName(id, recipies);
+                    printRecipe('<id>: <name> <url>', recipe);
                 });
             }
         });
