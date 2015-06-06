@@ -4,8 +4,19 @@
 var fs = require('fs');
 var rl = require('readline');
 
-var printRecipie = function(recipie) {
-    console.log(recipie.id + ': ' + recipie.name);
+var printRecipe = function(formatStr, recipe){
+    var recipeName  = recipe.name;
+    var recipeUrl   = recipe.url;
+    var recipeId    = recipe.id;
+
+    var stringToPrint = formatStr;
+
+    stringToPrint = stringToPrint.replace('<name>', recipeName);
+    stringToPrint = stringToPrint.replace('<url>', recipeUrl);
+    stringToPrint = stringToPrint.replace('<id>', recipeId);
+
+    console.log(stringToPrint);
+
 };
 
 var getNameById = function(id, recipies) {
