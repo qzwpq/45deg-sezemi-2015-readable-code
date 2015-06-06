@@ -5,7 +5,9 @@ var fs = require('fs');
 var rl = require('readline');
 
 (function main(){
-    var filename = process.argv[2]; // argv = ["node", "app.js", filename]
+    var filename = process.argv[2]; // argv = ["node", "app.js", filename, [id, id, ....]]
+
+    var targetIds = process.argv[3];
 
     if(typeof filename !== "string") { // ファイル名が与えられていない
         console.log("No Input File.");
@@ -17,15 +19,23 @@ var rl = require('readline');
     var inputReadLine = rl.createInterface({'input': inputStream, 'output': {}});
     // 一行づつ読み込むためのインターフェース
 
-    var recipies = []; // レシピの配列
+    var recipieNameArray = []; // レシピの名前の配列
+
+    var recipies=[]; // レシピの名前とIDを含めるオブジェクトの配列
 
     inputReadLine
         .on('line', function(line){ // 一行読み込む
-            recipies.push(line); // レシピに追加
+            recipieNameArray.push(line); // レシピに追加
         })
         .on('close', function(){ // ファイル読み込み完了
-            recipies.forEach(function(recipie, index){
-                console.log((index + 1) + ':' + recipie); // 1-indexed
+            recipieNameArray.forEach(function(recipie, index){
+                var recipieObj = {
+                    id   : index + 1, // 1-indexed
+                    name : recipie
+                };
+
+                recipies.push(recipieObj);
             });
         });
+
 })();
